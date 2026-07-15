@@ -85,7 +85,7 @@ export default function Chapters() {
       </section>
 
       {/* Founded chapters showcase — classical/heritage styling */}
-      <section className="heritage-navy border-b border-border">
+      <section className="border-b border-border paper-grain">
         <div className="mx-auto max-w-6xl px-4 py-20 text-center sm:px-6">
           <Landmark className="mx-auto mb-5 h-9 w-9 text-secondary" />
           <p className="text-xs font-medium uppercase tracking-[0.35em] text-secondary/70">Established &amp; Active</p>
@@ -121,7 +121,7 @@ export default function Chapters() {
         </div>
       </section>
 
-      <section>
+      <section className="paper-grain">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           {isLoading ? (
             <p className="text-muted-foreground">Loading chapters…</p>
