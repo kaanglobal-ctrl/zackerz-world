@@ -1,4 +1,6 @@
+import { Link } from "wouter";
 import PublicLayout from "@/components/public-layout";
+import HeroCurtain from "@/components/hero-curtain";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -75,14 +77,16 @@ export default function Chapters() {
 
   return (
     <PublicLayout>
-      <section className="border-b border-border paper-grain">
-        <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
-          <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary">Chapters</p>
-          <h1 className="font-display text-5xl leading-tight text-balance sm:text-6xl">
-            The power of a global network, concentrated locally.
-          </h1>
-        </div>
-      </section>
+      <HeroCurtain delayMs={4000}>
+        <section className="border-b border-border paper-grain">
+          <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
+            <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary">Chapters</p>
+            <h1 className="font-display text-5xl leading-tight text-balance sm:text-6xl">
+              The power of a global network, concentrated locally.
+            </h1>
+          </div>
+        </section>
+      </HeroCurtain>
 
       {/* Founded chapters showcase — classical/heritage styling */}
       <section className="border-b border-border paper-grain">
@@ -107,14 +111,20 @@ export default function Chapters() {
                 <div className="font-display text-lg text-secondary/50">{ROMAN[i]}</div>
                 <div className="mt-2 font-display text-2xl text-secondary">{c.city}</div>
                 <div className="mt-1 text-xs uppercase tracking-wider text-secondary/50">{c.country}</div>
-                <span
-                  className={`mt-4 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold ${
-                    c.open ? "gate-badge-open" : "gate-badge-sealed"
-                  }`}
-                >
-                  {c.open ? <DoorOpen className="h-3.5 w-3.5" /> : <Lock className="h-3.5 w-3.5" />}
-                  {c.open ? "OPEN" : "SEALED"}
-                </span>
+                {c.open ? (
+                  <Link
+                    href="/apply"
+                    className="gate-badge-open mt-4 inline-flex cursor-pointer items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold transition-transform hover:scale-105"
+                  >
+                    <DoorOpen className="h-3.5 w-3.5" />
+                    OPEN
+                  </Link>
+                ) : (
+                  <span className="gate-badge-sealed mt-4 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold">
+                    <Lock className="h-3.5 w-3.5" />
+                    SEALED
+                  </span>
+                )}
               </div>
             ))}
           </div>
