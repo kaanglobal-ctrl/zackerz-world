@@ -1,0 +1,10 @@
+.env
+.env.local
+*.db
+*.sqlite
+*.sqlite3
+data.db
+node_modules
+current_session_context
+uploaded_attachments
+.vercel
