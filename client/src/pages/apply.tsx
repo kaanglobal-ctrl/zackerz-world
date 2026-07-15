@@ -109,7 +109,7 @@ export default function Apply() {
           {!isAuthenticated ? (
             <Card className="border-border bg-card">
               <CardContent className="p-8 text-center">
-                <h2 className="font-display text-2xl">Create an account to apply</h2>
+                <h2 className="font-display text-2xl">Apply to the Order</h2>
                 <p className="mt-2 text-sm text-muted-foreground">
                   You'll need an account so we can track your application.
                 </p>

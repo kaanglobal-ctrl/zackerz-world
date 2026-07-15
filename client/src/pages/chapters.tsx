@@ -1,4 +1,3 @@
-import { lazy, Suspense } from "react";
 import PublicLayout from "@/components/public-layout";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Card } from "@/components/ui/card";
@@ -6,16 +5,14 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { useAuth } from "@/hooks/use-auth";
-import { MapPin, Users, Crown, KeyRound, Clock, DoorOpen, Lock, Check, Landmark } from "lucide-react";
-
-const GlobeHero = lazy(() => import("@/components/globe-hero"));
+import { MapPin, Users, Crown, KeyRound, Clock, DoorOpen, Lock, Check, Landmark, ChevronDown } from "lucide-react";
 
 const ROMAN = ["I", "II", "III", "IV"];
 const FOUNDED_CHAPTERS = [
-  { city: "Paris", country: "France" },
-  { city: "Vienna", country: "Austria" },
-  { city: "Belgrade", country: "Serbia" },
-  { city: "Istanbul", country: "Türkiye" },
+  { city: "Paris", country: "France", open: false },
+  { city: "Vienna", country: "Austria", open: true },
+  { city: "Belgrade", country: "Serbia", open: false },
+  { city: "Istanbul", country: "Türkiye", open: false },
 ];
 
 type GateStatus = "open" | "sealed";
@@ -95,9 +92,13 @@ export default function Chapters() {
           <h2 className="mt-4 font-display text-4xl text-balance sm:text-5xl text-secondary">
             We have already formed <span className="italic">four Chapters.</span>
           </h2>
-          <div className="mx-auto mt-8 w-24 stripe-rule" />
 
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 flex flex-col items-center gap-1 text-secondary/60" aria-hidden="true">
+            <ChevronDown className="h-5 w-5 animate-bounce" />
+            <ChevronDown className="-mt-3 h-5 w-5 animate-bounce [animation-delay:150ms]" />
+          </div>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {FOUNDED_CHAPTERS.map((c, i) => (
               <div
                 key={c.city}
@@ -106,14 +107,16 @@ export default function Chapters() {
                 <div className="font-display text-lg text-secondary/50">{ROMAN[i]}</div>
                 <div className="mt-2 font-display text-2xl text-secondary">{c.city}</div>
                 <div className="mt-1 text-xs uppercase tracking-wider text-secondary/50">{c.country}</div>
+                <span
+                  className={`mt-4 inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold ${
+                    c.open ? "gate-badge-open" : "gate-badge-sealed"
+                  }`}
+                >
+                  {c.open ? <DoorOpen className="h-3.5 w-3.5" /> : <Lock className="h-3.5 w-3.5" />}
+                  {c.open ? "OPEN" : "SEALED"}
+                </span>
               </div>
             ))}
-          </div>
-
-          <div className="mt-16 h-[320px] sm:h-[420px]">
-            <Suspense fallback={null}>
-              <GlobeHero chapters={FOUNDED_CHAPTERS} />
-            </Suspense>
           </div>
         </div>
       </section>

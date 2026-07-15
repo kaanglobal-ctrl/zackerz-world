@@ -1,9 +1,8 @@
 import { Link, useLocation } from "wouter";
 import { useState } from "react";
-import { Menu, X, Sun, Moon, MessagesSquare } from "lucide-react";
+import { Menu, X, MessagesSquare } from "lucide-react";
 import Logo from "./logo";
 import { useAuth } from "@/hooks/use-auth";
-import { useTheme } from "@/hooks/use-theme";
 import { useMessageDock } from "@/hooks/use-message-dock";
 import { Button } from "@/components/ui/button";
 import FlightDeckButton from "./flight-deck-button";
@@ -86,7 +85,6 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [location] = useLocation();
   const { isAuthenticated, user, logout } = useAuth();
-  const { theme, toggle } = useTheme();
   const { isOpen, toggleDock } = useMessageDock();
   const onUniverse = location === UNIVERSE_HREF;
 
@@ -172,14 +170,6 @@ export default function Navbar() {
               <MessagesSquare size={18} />
             </button>
           )}
-          <button
-            onClick={toggle}
-            className="rounded-md p-2 text-foreground/70 transition-colors hover:text-primary"
-            aria-label="Toggle theme"
-            data-testid="button-theme-toggle"
-          >
-            {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
-          </button>
           {isAuthenticated ? (
             <>
               <FlightDeckButton />
@@ -213,6 +203,13 @@ export default function Navbar() {
                   Apply
                 </Button>
               </Link>
+              {isWorldDomain() && (
+                <a href="https://www.zackerz.com/#/login">
+                  <Button variant="ghost" size="sm" data-testid="button-login-external">
+                    Login
+                  </Button>
+                </a>
+              )}
             </>
           )}
         </div>
@@ -242,14 +239,6 @@ export default function Navbar() {
                   </Link>
                 ))}
             <div className="mt-2 flex flex-col gap-2 border-t border-border pt-3">
-              <button
-                onClick={() => toggle()}
-                className="flex items-center gap-2 rounded-md px-3 py-3 text-sm text-foreground/80 hover:bg-accent"
-                aria-label="Toggle theme"
-              >
-                {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
-                {theme === "light" ? "Dark mode" : "Light mode"}
-              </button>
               {isAuthenticated ? (
                 <>
                   <FlightDeckButton fullWidth onNavigate={() => setOpen(false)} />
@@ -267,6 +256,11 @@ export default function Navbar() {
                   <Link href="/apply" onClick={() => setOpen(false)}>
                     <Button className="w-full">Apply</Button>
                   </Link>
+                  {isWorldDomain() && (
+                    <a href="https://www.zackerz.com/#/login">
+                      <Button variant="outline" className="w-full">Login</Button>
+                    </a>
+                  )}
                 </>
               )}
             </div>

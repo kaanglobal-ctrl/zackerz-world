@@ -220,29 +220,6 @@ export default function Home() {
   }, [chapters.length, events.length, tiers.length, showMemberUniverse]);
 
   const heroIntroRef = useRef<HTMLDivElement>(null);
-  // For returning visitors: briefly show the intro, then fade it away so the
-  // globe stands alone. Skipped for reduced-motion (text removed immediately).
-  useEffect(() => {
-    if (!isReturning) return;
-    const el = heroIntroRef.current;
-    if (!el) return;
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced) {
-      el.style.display = "none";
-      return;
-    }
-    const timer = window.setTimeout(() => {
-      el.style.transition =
-        "opacity 1.4s cubic-bezier(0.16,1,0.3,1), transform 1.4s cubic-bezier(0.16,1,0.3,1)";
-      el.style.opacity = "0";
-      el.style.transform = "translateY(-24px)";
-      el.style.pointerEvents = "none";
-      window.setTimeout(() => {
-        el.style.display = "none";
-      }, 1500);
-    }, 1600);
-    return () => window.clearTimeout(timer);
-  }, [isReturning]);
 
   return (
     <PublicLayout>
@@ -299,7 +276,6 @@ export default function Home() {
           </div>
           </div>
 
-          {!isReturning && (
           <div className="mt-20 grid w-full grid-cols-2 gap-6 border-t border-border pt-12 sm:grid-cols-4">
             {STATS.map((s) => (
               <div key={s.label}>
@@ -308,25 +284,8 @@ export default function Home() {
               </div>
             ))}
           </div>
-          )}
         </div>
       </section>
-      )}
-
-      {/* Returning visitors: stats live in their own band below the globe hero */}
-      {isReturning && (
-        <section className="border-b border-border bg-card">
-          <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-            <div className="reveal grid grid-cols-2 gap-6 sm:grid-cols-4">
-              {STATS.map((s) => (
-                <div key={s.label} className="text-center">
-                  <div className="stat-value font-display text-4xl text-primary sm:text-5xl" data-value={s.value}>{s.value}</div>
-                  <div className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{s.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
       )}
 
       {/* Capabilities badge row */}
