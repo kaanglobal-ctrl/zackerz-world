@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { useAuth } from "@/hooks/use-auth";
-import { MapPin, Users, Crown, KeyRound, Clock, DoorOpen, Lock, Check, Landmark, ChevronDown } from "lucide-react";
+import { MapPin, Users, Crown, KeyRound, Clock, DoorOpen, Lock, Check, Landmark } from "lucide-react";
 
 const ROMAN = ["I", "II", "III", "IV"];
 const FOUNDED_CHAPTERS = [
@@ -97,12 +97,7 @@ export default function Chapters() {
             We have already formed <span className="italic">four Chapters.</span>
           </h2>
 
-          <div className="mt-8 flex flex-col items-center gap-1 text-secondary/60" aria-hidden="true">
-            <ChevronDown className="h-5 w-5 animate-bounce" />
-            <ChevronDown className="-mt-3 h-5 w-5 animate-bounce [animation-delay:150ms]" />
-          </div>
-
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {FOUNDED_CHAPTERS.map((c, i) => (
               <div
                 key={c.city}

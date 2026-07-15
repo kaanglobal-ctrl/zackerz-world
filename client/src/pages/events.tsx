@@ -1,7 +1,7 @@
 import PublicLayout from "@/components/public-layout";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Card } from "@/components/ui/card";
-import { Calendar, MapPin, Compass, Users as UsersIcon, Plus } from "lucide-react";
+import { Calendar, MapPin, Compass, Users as UsersIcon, Plus, Plane, ShoppingBag, Landmark, Mountain } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -35,6 +35,37 @@ const EVENT_TYPES = [
   { value: "expedition", label: "Expedition" },
   { value: "masterclass", label: "Masterclass" },
   { value: "festival", label: "Festival" },
+];
+
+const CURATED_EXPERIENCES = [
+  {
+    icon: Mountain,
+    title: "Pilgrimage to Athos",
+    location: "Mount Athos, Greece",
+    description:
+      "A monastic retreat on the Holy Mountain — silence, discipline, and centuries of tradition. Limited to a small delegation each season.",
+  },
+  {
+    icon: ShoppingBag,
+    title: "Curated Shopping & Culture",
+    location: "Istanbul, Türkiye",
+    description:
+      "Private access to the Grand Bazaar's finest houses, bespoke tailoring, and a night among Ottoman palaces — guided by locals who open doors others can't.",
+  },
+  {
+    icon: Landmark,
+    title: "Founders' Summit",
+    location: "Shanghai, China",
+    description:
+      "Where East meets ambition. A closed-door gathering of operators and capital, followed by a private dinner overlooking the Bund.",
+  },
+  {
+    icon: Plane,
+    title: "Alpine Chapter Gathering",
+    location: "Vienna, Austria",
+    description:
+      "A weekend of coffeehouse strategy sessions, formalwear, and the kind of conversation that doesn't happen over email.",
+  },
 ];
 
 function HostEventForm({ permissions }: { permissions: HostPermissions }) {
@@ -164,8 +195,39 @@ export default function Events() {
             Tough experiences, stronger connections.
           </h1>
           <p className="mt-6 text-lg text-muted-foreground">
-            From America to Australia, to Athos. The physical will make you stronger.
+            From Shanghai to Vienna, to Athos. The physical will make you stronger.
           </p>
+        </div>
+      </section>
+
+      {/* Curated experiences — the jet-setter showcase */}
+      <section className="heritage-navy border-b border-border">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+          <div className="mb-12 max-w-2xl text-center sm:mx-auto">
+            <p className="mb-3 text-xs font-medium uppercase tracking-[0.3em] text-secondary/70">Curated Travel</p>
+            <h2 className="font-display text-4xl text-balance sm:text-5xl text-secondary">
+              A calendar built for those who move.
+            </h2>
+            <p className="mt-4 text-secondary/70">
+              Beyond local chapter meetings, the Order curates a handful of members-only
+              expeditions each year — small in number, deliberate in access.
+            </p>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2">
+            {CURATED_EXPERIENCES.map((exp) => (
+              <div
+                key={exp.title}
+                className="rounded-lg border border-secondary/25 bg-secondary/[0.03] p-6 transition-colors hover:border-secondary/50"
+              >
+                <exp.icon className="h-6 w-6 text-secondary" />
+                <h3 className="mt-4 font-display text-2xl text-secondary">{exp.title}</h3>
+                <p className="mt-1 flex items-center gap-1.5 text-xs uppercase tracking-wider text-secondary/50">
+                  <MapPin className="h-3 w-3" /> {exp.location}
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-secondary/70">{exp.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -202,7 +264,7 @@ export default function Events() {
           <div className="mt-12 rounded-lg border border-dashed border-border bg-card/50 p-8 text-center">
             <p className="font-display text-2xl">Events are members-only.</p>
             <p className="mt-2 text-sm text-muted-foreground">Join the Order to RSVP to expeditions, masterclasses, and Zackerz Fests.</p>
-            <Link href="/apply"><Button className="mt-5">Apply now</Button></Link>
+            <Link href="/apply"><Button className="mt-5">Apply to the Order</Button></Link>
           </div>
         </div>
       </section>
