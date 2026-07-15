@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 const FAQS = [
   {
     q: "Who is ZACKERZ for?",
-    a: "Humans with at least five years of mastery in their field, who bring something real to the circle. All ethnicities, all faiths. One standard: Honor. This is not a place to figure yourself out.",
+    a: "Humans with at least five years of mastery in their field, who bring something real to the circle. All ethnicities, all faiths. One standard: Character. This is not a place to figure yourself out.",
   },
   {
     q: "Is it digital or physical?",

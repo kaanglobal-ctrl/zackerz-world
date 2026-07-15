@@ -77,7 +77,7 @@ export default function Chapters() {
 
   return (
     <PublicLayout>
-      <HeroCurtain delayMs={4000}>
+      <HeroCurtain delayMs={3000}>
         <section className="border-b border-border paper-grain">
           <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
             <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary">Chapters</p>

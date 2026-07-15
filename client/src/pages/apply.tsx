@@ -73,7 +73,7 @@ export default function Apply() {
         <div className="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6">
           <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary">Application</p>
           <h1 className="font-display text-5xl leading-tight text-balance sm:text-6xl">
-            One standard: <span className="italic text-primary">Honor.</span>
+            One standard: <span className="italic text-primary">Character.</span>
           </h1>
           <p className="mt-6 text-lg text-muted-foreground">
             Each applicant is interviewed personally. Historically, only around 5% are accepted.

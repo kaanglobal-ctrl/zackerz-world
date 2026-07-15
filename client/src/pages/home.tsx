@@ -38,10 +38,10 @@ const VALUES = [
 ];
 
 const STATS = [
-  { value: "200+", label: "Active members" },
-  { value: "40+", label: "Countries" },
-  { value: "11", label: "Chapters" },
-  { value: "~5%", label: "Acceptance rate" },
+  { value: "60+", label: "Active members" },
+  { value: "5+", label: "Countries" },
+  { value: "4", label: "Chapters" },
+  { value: "~5%", label: "Acceptance rate goal" },
 ];
 
 const CAPABILITIES = [
@@ -443,7 +443,7 @@ export default function Home() {
         <div className="mx-auto flex max-w-3xl flex-col items-center px-4 py-24 text-center sm:px-6">
           <div className="mb-8 w-24 stripe-rule" />
           <h2 className="font-display text-4xl text-balance sm:text-6xl text-secondary">
-            All ethnicities. All faiths. One standard: <span className="italic">Honor.</span>
+            All ethnicities. All faiths. One standard: <span className="italic">Character.</span>
           </h2>
           <p className="mt-6 max-w-xl text-lg text-secondary/70">
             Each applicant is interviewed personally — not to assess wealth or fame, but
