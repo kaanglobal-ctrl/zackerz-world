@@ -108,15 +108,11 @@ export default function Apply() {
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6">
           {!isAuthenticated ? (
             <Card className="border-border bg-card">
-              <CardContent className="p-8 text-center">
-                <h2 className="font-display text-2xl">Apply to the Order</h2>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  You'll need an account so we can track your application.
-                </p>
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
-                  <Link href="/login"><Button>Sign in or register</Button></Link>
-                  <Link href="/order"><Button variant="outline">Read the values first</Button></Link>
-                </div>
+              <CardContent className="p-10 text-center sm:p-14">
+                <h2 className="font-display text-4xl text-balance sm:text-5xl">Apply to the Order</h2>
+                <Link href="/login">
+                  <Button size="lg" className="mt-8">Sign In</Button>
+                </Link>
               </CardContent>
             </Card>
           ) : done ? (
