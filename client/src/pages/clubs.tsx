@@ -2,7 +2,6 @@ import { useMemo, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Redirect } from "wouter";
 import Navbar from "@/components/navbar";
-import CurtainIntro from "@/components/curtain-intro";
 import Footer from "@/components/footer";
 import { CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -255,7 +254,6 @@ export default function ClubsPage() {
           />
         ))}
       </div>
-      <CurtainIntro label="Clubs" />
       <Navbar />
       <main className="relative z-10 flex-1">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">

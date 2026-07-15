@@ -1,12 +1,22 @@
+import { lazy, Suspense } from "react";
 import PublicLayout from "@/components/public-layout";
-import HeroCurtain from "@/components/hero-curtain";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { useAuth } from "@/hooks/use-auth";
-import { MapPin, Users, Crown, KeyRound, Clock, DoorOpen, Lock, Check } from "lucide-react";
+import { MapPin, Users, Crown, KeyRound, Clock, DoorOpen, Lock, Check, Landmark } from "lucide-react";
+
+const GlobeHero = lazy(() => import("@/components/globe-hero"));
+
+const ROMAN = ["I", "II", "III", "IV"];
+const FOUNDED_CHAPTERS = [
+  { city: "Paris", country: "France" },
+  { city: "Vienna", country: "Austria" },
+  { city: "Belgrade", country: "Serbia" },
+  { city: "Istanbul", country: "Türkiye" },
+];
 
 type GateStatus = "open" | "sealed";
 
@@ -68,16 +78,45 @@ export default function Chapters() {
 
   return (
     <PublicLayout>
-      <HeroCurtain>
-        <section className="border-b border-border paper-grain">
-          <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
-            <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary">Chapters</p>
-            <h1 className="font-display text-5xl leading-tight text-balance sm:text-6xl">
-              The power of a global network, concentrated locally.
-            </h1>
+      <section className="border-b border-border paper-grain">
+        <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
+          <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary">Chapters</p>
+          <h1 className="font-display text-5xl leading-tight text-balance sm:text-6xl">
+            The power of a global network, concentrated locally.
+          </h1>
+        </div>
+      </section>
+
+      {/* Founded chapters showcase — classical/heritage styling */}
+      <section className="heritage-navy border-b border-border">
+        <div className="mx-auto max-w-6xl px-4 py-20 text-center sm:px-6">
+          <Landmark className="mx-auto mb-5 h-9 w-9 text-secondary" />
+          <p className="text-xs font-medium uppercase tracking-[0.35em] text-secondary/70">Established &amp; Active</p>
+          <h2 className="mt-4 font-display text-4xl text-balance sm:text-5xl text-secondary">
+            We have already formed <span className="italic">four Chapters.</span>
+          </h2>
+          <div className="mx-auto mt-8 w-24 stripe-rule" />
+
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {FOUNDED_CHAPTERS.map((c, i) => (
+              <div
+                key={c.city}
+                className="rounded-lg border border-secondary/25 bg-secondary/[0.03] px-6 py-8 transition-colors hover:border-secondary/50"
+              >
+                <div className="font-display text-lg text-secondary/50">{ROMAN[i]}</div>
+                <div className="mt-2 font-display text-2xl text-secondary">{c.city}</div>
+                <div className="mt-1 text-xs uppercase tracking-wider text-secondary/50">{c.country}</div>
+              </div>
+            ))}
           </div>
-        </section>
-      </HeroCurtain>
+
+          <div className="mt-16 h-[320px] sm:h-[420px]">
+            <Suspense fallback={null}>
+              <GlobeHero chapters={FOUNDED_CHAPTERS} />
+            </Suspense>
+          </div>
+        </div>
+      </section>
 
       <section>
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">

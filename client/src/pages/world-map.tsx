@@ -6,7 +6,6 @@ import { zoom, zoomIdentity, type D3ZoomEvent } from "d3-zoom";
 import { feature } from "topojson-client";
 import type { Feature, FeatureCollection, Geometry } from "geojson";
 import Navbar from "@/components/navbar";
-import CurtainIntro from "@/components/curtain-intro";
 import Footer from "@/components/footer";
 import { MapPin, Users, X, Plus, Minus, Locate, ChevronRight, DoorOpen, Lock } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -196,7 +195,6 @@ export default function WorldMap() {
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <CurtainIntro label="Network" />
       <Navbar />
       <main className="flex-1">
         <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">

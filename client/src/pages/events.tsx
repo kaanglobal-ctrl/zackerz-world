@@ -1,5 +1,4 @@
 import PublicLayout from "@/components/public-layout";
-import HeroCurtain from "@/components/hero-curtain";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Card } from "@/components/ui/card";
 import { Calendar, MapPin, Compass, Users as UsersIcon, Plus } from "lucide-react";
@@ -158,19 +157,17 @@ export default function Events() {
 
   return (
     <PublicLayout>
-      <HeroCurtain>
-        <section className="border-b border-border paper-grain">
-          <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
-            <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary">Events</p>
-            <h1 className="font-display text-5xl leading-tight text-balance sm:text-6xl">
-              Tough experiences, stronger connections.
-            </h1>
-            <p className="mt-6 text-lg text-muted-foreground">
-              From America to Australia, to Athos. The physical will make you stronger.
-            </p>
-          </div>
-        </section>
-      </HeroCurtain>
+      <section className="border-b border-border paper-grain">
+        <div className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
+          <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary">Events</p>
+          <h1 className="font-display text-5xl leading-tight text-balance sm:text-6xl">
+            Tough experiences, stronger connections.
+          </h1>
+          <p className="mt-6 text-lg text-muted-foreground">
+            From America to Australia, to Athos. The physical will make you stronger.
+          </p>
+        </div>
+      </section>
 
       <section>
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">

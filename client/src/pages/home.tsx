@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { useEffect, useRef, useState, lazy, Suspense } from "react";
-import { Shield, Mountain, Users, BookOpen, ArrowRight, Quote } from "lucide-react";
+import { Shield, Mountain, Users, BookOpen, ArrowRight, Quote, Sparkles, Rocket, Crown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
@@ -42,6 +42,29 @@ const STATS = [
   { value: "40+", label: "Countries" },
   { value: "11", label: "Chapters" },
   { value: "~5%", label: "Acceptance rate" },
+];
+
+const CAPABILITIES = [
+  {
+    icon: Sparkles,
+    title: "AI-Powered",
+    body: "Next-level infrastructure built in-house — not bolted on.",
+  },
+  {
+    icon: Rocket,
+    title: "No Funding Needed",
+    body: "Self-funded and sustainable — no outside investors, for now.",
+  },
+  {
+    icon: Users,
+    title: "100% User-Built",
+    body: "Every feature shaped directly by the people who use it.",
+  },
+  {
+    icon: Crown,
+    title: "Member-Governed",
+    body: "Real representation — the Order answers to its members.",
+  },
 ];
 
 type Tier = { id: string; name: string; priceYearly: number; currency: string };
@@ -146,6 +169,16 @@ export default function Home() {
         ease: "power3.out",
         stagger: 0.12,
         scrollTrigger: { trigger: ".pillars-grid", start: "top 80%" },
+      });
+
+      // Capability badges staggered reveal
+      gsap.from(".capability-badge", {
+        opacity: 0,
+        y: 36,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.12,
+        scrollTrigger: { trigger: ".capabilities-grid", start: "top 85%" },
       });
 
       // Stat count-up
@@ -296,6 +329,24 @@ export default function Home() {
         </section>
       )}
 
+      {/* Capabilities badge row */}
+      <section className="border-b border-border bg-card">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+          <div className="capabilities-grid grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {CAPABILITIES.map((c) => (
+              <div
+                key={c.title}
+                className="capability-badge flex flex-col items-center gap-3 rounded-lg border border-card-border px-5 py-7 text-center transition-shadow hover:shadow-md"
+              >
+                <c.icon className="h-7 w-7 text-primary" />
+                <div className="font-display text-xl">{c.title}</div>
+                <p className="text-sm leading-relaxed text-muted-foreground">{c.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Values */}
       <section className="graphite-band border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
@@ -322,7 +373,7 @@ export default function Home() {
         <div className="mx-auto max-w-4xl px-4 py-20 text-center sm:px-6">
           <Quote className="mx-auto mb-6 h-8 w-8 text-secondary/60" />
           <p className="font-display text-3xl leading-snug text-balance sm:text-4xl text-secondary">
-            "This is not a networking or business group. Not a self-improvement course.
+            "This is not just a networking or business group. Not a self-improvement course.
             Not another online community. It is an organisation built around shared values."
           </p>
         </div>
