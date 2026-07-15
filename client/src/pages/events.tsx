@@ -201,7 +201,7 @@ export default function Events() {
       </section>
 
       {/* Curated experiences — the jet-setter showcase */}
-      <section className="heritage-navy border-b border-border">
+      <section className="border-b border-border paper-grain">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
           <div className="mb-12 max-w-2xl text-center sm:mx-auto">
             <p className="mb-3 text-xs font-medium uppercase tracking-[0.3em] text-secondary/70">Curated Travel</p>
@@ -231,7 +231,7 @@ export default function Events() {
         </div>
       </section>
 
-      <section>
+      <section className="paper-grain">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
           {canHost && perms && <HostEventForm permissions={perms} />}
 
